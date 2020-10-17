@@ -20,7 +20,9 @@ ingredients:
     - ls codium_*.deb | cut -d _ -f 2 > VERSION
 
 script:
+  - wget -q 'https://raw.githubusercontent.com/ferion11/vscodium/master/marketplace.patch'
   - patch -p1 < ./marketplace.patch
+  - rm ./marketplace.patch
   - sed -i -e 's|/usr/share/pixmaps/||g' usr/share/applications/codium.desktop
   - cp usr/share/applications/codium.desktop .
   - cp usr/share/pixmaps/vscodium.png vscodium.png
