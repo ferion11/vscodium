@@ -20,6 +20,7 @@ ingredients:
     - ls codium_*.deb | cut -d _ -f 2 > VERSION
 
 script:
+  - patch -p1 < ./marketplace.patch
   - sed -i -e 's|/usr/share/pixmaps/||g' usr/share/applications/codium.desktop
   - cp usr/share/applications/codium.desktop .
   - cp usr/share/pixmaps/vscodium.png vscodium.png
